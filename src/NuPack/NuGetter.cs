@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO;
 using System.Text;
 
 namespace NuPack
@@ -34,6 +35,8 @@ namespace NuPack
 
          if (!string.IsNullOrWhiteSpace(_outputDirectory))
          {
+            Directory.CreateDirectory(_outputDirectory);
+
             args.AppendFormat(" -OutputDirectory \"{0}\"", _outputDirectory);
          }
 
