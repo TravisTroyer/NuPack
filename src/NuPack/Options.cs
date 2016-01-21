@@ -21,5 +21,8 @@ namespace NuPack
 
       [Option('c', "BuildConfiguration", DefaultValue = "Release", HelpText = "Build configuration used for packaging.")]
       public string BuildConfiguration { get; set; }
+
+      [Option('p', "Platform", HelpText = "Target platform (e.g. x64).")]
+      public string Platform { get; set; }
    }
 }

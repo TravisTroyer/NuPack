@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data.Odbc;
-using System.Linq;
+﻿using System.Linq;
 using CommandLine;
 
 namespace NuPack
@@ -21,7 +19,9 @@ namespace NuPack
 
       private static int Pack(Options options)
       {
-         var nugetter = new NuGetter(options.NuGetPath, options.OutputDirectory, options.Symbols, options.BuildConfiguration);
+         var nugetter = new NuGetter(options.NuGetPath, options.OutputDirectory, options.Symbols,
+            options.BuildConfiguration, options.Platform);
+
          var packer = new Packer(nugetter);
 
          packer.Pack(options.SearchDirectory, options.Recursive);

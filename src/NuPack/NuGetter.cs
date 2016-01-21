@@ -10,13 +10,15 @@ namespace NuPack
       private readonly string _outputDirectory;
       private readonly bool _withSymbols;
       private readonly string _buildConfiguration;
+      private readonly string _platform;
 
-      public NuGetter(string nuGetPath, string outputDirectory, bool withSymbols, string buildConfiguration)
+      public NuGetter(string nuGetPath, string outputDirectory, bool withSymbols, string buildConfiguration, string platform)
       {
          _nuGetPath = nuGetPath;
          _outputDirectory = outputDirectory;
          _withSymbols = withSymbols;
          _buildConfiguration = buildConfiguration;
+         _platform = platform;
       }
 
       public void PackCsProject(string csProjPath)
@@ -48,6 +50,11 @@ namespace NuPack
          if (!string.IsNullOrWhiteSpace(_buildConfiguration))
          {
             args.Append(" -Prop Configuration=" + _buildConfiguration);
+         }
+
+         if (!string.IsNullOrWhiteSpace(_platform))
+         {
+            args.Append(" -Prop Platform=" + _platform);
          }
 
          return args.ToString();
